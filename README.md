@@ -1,5 +1,5 @@
-### sweatshop.ly
-a t-shirt shopping site
+# sweatshop.ly
+A t-shirt site with inventory management and customer-facing functionality.
 
 ## Created by
 
@@ -20,13 +20,13 @@ a t-shirt shopping site
 
 ## Functionality
 
-#User
+###User
 - User can 'buy' a quantity of a given shirt if at least that quantity exists in inventory
 - In a tranaction, a user chooses quantity to purchase and enters an email address
 - Available inventory updates to reflect quantities purchased by a user
 - User sees a confirmation when they make a purchase.
 
-#Admin
+###Admin
 - Admin can go to ```/admin``` and see an admin panel.
 - Admin can add a shirt, remove a shirt, and update all the attributes of a shirt (quantity, price, image url)
 - Admin can see all past purchases of a given customer.
