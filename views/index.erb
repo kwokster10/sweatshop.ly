@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+ <ul class="shirts_list">
+
+    <% shirts.each do |shirt| %>
+
+      <li>
+
+      <%= shirt.name %>
+      <%= shirt.quantity %>
+      <img src='<%= shirt.image %>'/>
+      
+      </li>
+
+    <%end%>
+
+</ul>
+
+</body>
+
+</html>

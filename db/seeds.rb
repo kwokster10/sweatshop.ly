@@ -1,4 +1,4 @@
-require_realtive '../models/tshirt'
+require_relative '../models/shirt'
 
 Shirt.create({
 	name: "Frequent Flyer Tee",
