@@ -14,6 +14,3 @@ get '/shirts' do #show all shirts
   erb :index , locals: {shirts: Shirt.all} 
 
 end
-
-
-
