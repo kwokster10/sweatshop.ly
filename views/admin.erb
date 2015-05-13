@@ -4,6 +4,7 @@
 	<title></title>
 </head>
 <body>
+<a href="/shirts"> Go Home </a>
 
 	<form action="/shirts" method="POST">
      	
@@ -13,7 +14,8 @@
       			<input type="text" name="quantity" placeholder="Quantity">
       			<label>Image</label>
       			<input type="text" name="image" placeholder="Image URL">
-      			<button>Edit</button>
+      			<button>New</button>
+  </form>
 
  		<ul class="shirts_list">
 
@@ -24,8 +26,10 @@
       		<%= shirt.name %>
       		<%= shirt.quantity %>
       		<img src='<%= shirt.image %>'/>
+          <form action="/shirts/<%= shirt.id %>" method="POST">
+          <input tyoe="hidden" name="_method" value="DELETE">
       		<button>Delete</button>
-
+          </form>
 
       		<form action="/shirts/<%= shirt.id %>" method="POST">
       			<input type="hidden" name="_method" value="PUT">
@@ -38,6 +42,7 @@
      	</li>
 
     	<%end%>
+
 
 	</ul>
 	</body>
