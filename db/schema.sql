@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS shirts (
 	name TEXT, 
   	image TEXT,
 	quantity INTEGER,
-	price TEXT
+	price REAL
 );
 
 CREATE TABLE IF NOT EXISTS buyers (

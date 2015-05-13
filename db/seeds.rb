@@ -4,21 +4,21 @@ Shirt.create({
 	name: "Frequent Flyer Tee",
 	image: "http://cdn.karmaloopassets.com/vendor458x698/529200-1.jpg",
 	quantity: 12,
-	price: "19.99"
+	price: 19.99
 	});
 
 Shirt.create({
 	name: "LQR Currency",
 	image: "http://cdn.karmaloopassets.com/vendor458x698/539561-1.jpg",
 	quantity: 12,
-	price: "22.95"
+	price: 22.95
 	});
 
 Shirt.create({
 	name: "Pinapple Express",
 	image: "http://cdn.karmaloopassets.com/vendor458x698/542554-1.jpg",
 	quantity: 12,
-	price: "12.99"
+	price: 12.99
 	});
 
 
