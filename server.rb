@@ -24,5 +24,7 @@ get '/shirts/:id' do
 	erb :show, locals: {shirt: shirt}
 end
 
-
-
+get '/admin' do
+	shirt = Shirt.all
+	erb :admin, locals: {shirts: shirt}
+end
