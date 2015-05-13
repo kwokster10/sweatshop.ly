@@ -23,11 +23,14 @@ get '/shirts/:id' do
 	erb :show, locals: {shirt: shirt}
 end
 
+# show admin page
 get '/admin' do
 	shirt = Shirt.all
 	erb :admin, locals: {shirts: shirt}
 end
 
+
+# update a single shirt
 put '/shirts/:id' do
 	id = params[:id].to_i
 	shirt = Shirt.find(id)
