@@ -20,11 +20,22 @@ end
 get '/shirts/:id' do
 	id = params[:id].to_i
 	shirt = Shirt.find(id)
-	puts "hello"
 	erb :show, locals: {shirt: shirt}
 end
 
 get '/admin' do
 	shirt = Shirt.all
 	erb :admin, locals: {shirts: shirt}
+end
+
+put '/shirts/:id' do
+	id = params[:id].to_i
+	shirt = Shirt.find(id)
+	editShirt = {
+		name: params[:editName],
+		image: params[:editImage],
+		quantity: params[:editQuantity]
+	}
+	shirt.update(editShirt)
+	redirect('/shirts')
 end
