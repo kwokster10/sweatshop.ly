@@ -1,4 +1,5 @@
-CREATE TABLE IF NOT EXISTS shirts (
+DROP TABLE IF EXISTS shirts;
+CREATE TABLE shirts (
 	id INTEGER PRIMARY KEY,
 	name TEXT, 
   	image TEXT,
@@ -6,7 +7,8 @@ CREATE TABLE IF NOT EXISTS shirts (
 	price REAL
 );
 
-CREATE TABLE IF NOT EXISTS buyers (
+DROP TABLE IF EXISTS buyers;
+CREATE TABLE buyers (
 	id INTEGER PRIMARY KEY,
 	email TEXT, 
   	p_quantity INTEGER,
