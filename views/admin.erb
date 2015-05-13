@@ -4,7 +4,10 @@
 	<link rel = "stylesheet" type = "text/css" href = "/css/style.css">
 </head>
 <body>
+<h1>ADMIN</h1>
+
 <a href="/shirts"> Go Home </a>
+<a href="/admin/purchases">Purchase History</a>
 
 	<form action="/shirts" method="POST">
      	
@@ -27,7 +30,7 @@
       		<%= shirt.quantity %>
       		<img src='<%= shirt.image %>'/>
           <form action="/shirts/<%= shirt.id %>" method="POST">
-          <input tyoe="hidden" name="_method" value="DELETE">
+          <input type="hidden" name="_method" value="DELETE">
       		<button>Delete</button>
           </form>
 
