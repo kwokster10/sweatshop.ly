@@ -44,6 +44,7 @@ put '/shirts/:id' do
 	shirt = Shirt.find(id)
 	editShirt = {
 		name: params[:editName].chomp,
+		price: params[:editPrice].chomp,
 		image: params[:editImage].chomp,
 		quantity: params[:editQuantity].to_i
 	}
@@ -55,9 +56,10 @@ end
 post "/shirts" do 
 	id = params[:id].to_i
 	name = params[:name].chomp
+	price = params[:price].chomp
 	image = params[:image].chomp
 	quantity = params[:quantity].to_i
-	Shirt.create(name: name, image: image, quantity: quantity)
+	Shirt.create(name: name, price: price, image: image, quantity: quantity)
 	redirect("/shirts")
 end
 
@@ -69,11 +71,16 @@ post "/buyers/:shirt_id" do
 	Buyer.create({email: buyer, p_quantity: quantity, s_id: shirt_id})
 	shirt = Shirt.find(shirt_id)
 	shirt.update({quantity: shirt.quantity - quantity})
-	Timeout::timeout(5) {
-		erb :thanks
-	}
-	redirect("/shirts")
+
+	erb :thanks
+
+
 end
+
+# get '/buyers/:shirt_id' do
+# 	sleep(5)
+# 	redirect('/shirts')
+# end
 
 # delete a shirt
 delete "/shirts/:id" do
@@ -98,14 +105,6 @@ get '/admin/purchases' do
 
   erb :purchases, locals: ({buyers: buyers, shirts: shirts, emails: emails})
 end
-
-
-
-
-
-
-
-
 
 
 
