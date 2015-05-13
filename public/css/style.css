@@ -1,0 +1,10 @@
+img {
+	max-height: 300px;
+	max-width: 400px;
+}
+
+h1 {
+	font-family: 'Kalam', cursive;
+	text-align: center;
+	font-size: 3.5em;
+}
