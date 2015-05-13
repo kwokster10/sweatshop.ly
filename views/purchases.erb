@@ -3,12 +3,20 @@
 <head>
 <link rel = "stylesheet" type = "text/css" href = "/css/style.css">
 <link href='http://fonts.googleapis.com/css?family=Kalam:700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Calligraffitti' rel='stylesheet' type='text/css'>
 </head>
 <body>
-
+<header>
+  <ul class = "nav">
+  <li><a href="/shirts"> The Shop </a> </li>
+  <li><a href="/admin"> Admin Site </a> </li>
+  </ul>
 <h1>Purchase History</h1>
-<a href="/admin">Back to Admin</a>
+</header>
+
+<div class = "stock">
 <a href="/shirts">See Stock</a>
+
   <%emails.each do |email| %>
     
     <h3><%= email %></h3>
@@ -21,9 +29,9 @@
 
         <li>
 
-          <%= per.p_quantity %>
+        Bought <%= per.p_quantity %>
           
-          <%= shirts.find(per.s_id).name %>
+         <%= shirts.find(per.s_id).name %> T-Shirts
 
         </li>
 
@@ -34,6 +42,7 @@
   </ul>
    
   <%end%>
+  </div>
 
 </body>
 

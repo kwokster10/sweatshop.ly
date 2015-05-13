@@ -3,25 +3,34 @@
 <head>
 	<link rel = "stylesheet" type = "text/css" href = "/css/style.css">
 	<link href='http://fonts.googleapis.com/css?family=Kalam:700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Calligraffitti' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
+<header>
+	<ul class = "nav">
+	<li><a href="/shirts"> The Shop </a> </li>
+	<li><a href="/admin"> Admin Site </a> </li>
+  </ul>
 
 <h1> SweatShop.ly </h1>
-<a href="/admin">Admin</a>
-
-
+</header>
  <ul class="shirts_list">
 
     <% shirts.each do |shirt| %>
 
       <li>
-
       <a href="/shirts/<%= shirt.id %>"><%= shirt.name %></a>
+<<<<<<< HEAD
+      <br />
+      Only <%= shirt.quantity %> Left!
+      <br />
+=======
       <%= shirt.quantity %>
       <%= shirt.price %>
+>>>>>>> 97ebcd7e4ebb679fa9a574b4db72f7cb668bc898
       <img src='<%= shirt.image %>'/>
-      
+      <br />
       </li>
 
     <%end%>

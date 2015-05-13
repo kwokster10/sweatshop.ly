@@ -3,11 +3,20 @@
 <head>
 	<link rel = "stylesheet" type = "text/css" href = "/css/style.css">
 	<link href='http://fonts.googleapis.com/css?family=Kalam:700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Calligraffitti' rel='stylesheet' type='text/css'>
 	<meta charset="UTF-8">
 	<title>One shirt</title>
 </head>
 <body>
+<header>
+	<ul class = "nav">
+	<li><a href="/shirts"> The Shop </a> </li>
+	<li><a href="/admin"> Admin Site </a> </li>
+	</ul>
 	<h1><%= shirt.name %></h1>
+</header>
+<br />
+	<div class = "show">
 	<img src="<%= shirt.image %>">
 	<p>$<%= shirt.price %></p>
 	<form action="/buyers/<%= shirt.id %>" method="POST">
@@ -19,7 +28,6 @@
 		<input type="text" name="email" placeholder="Enter Email">
 		<button id="purchase_button">Purchase</button>	
 	</form>
-	<a href= "/shirts"> Go Home </a>
-
+	</div>
 </body>
 </html>

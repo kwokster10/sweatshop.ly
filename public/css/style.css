@@ -1,10 +1,89 @@
+body {
+	padding: 0px;
+	margin: 0px;
+}
+a {
+	font-family: 'Calligraffitti', cursive;
+	font-size: 1.5em;
+	color: black;
+}
+
 img {
-	max-height: 300px;
-	max-width: 400px;
+	max-height: 200px;
+	max-width: 200px;
+	border-radius: 5px;
+	border-color: solid-white;
 }
 
 h1 {
 	font-family: 'Kalam', cursive;
 	text-align: center;
-	font-size: 3.5em;
+	font-size: 4em;
 }
+
+h2 {
+	text-align: center;
+	font-family: 'Kalam', cursive;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li {
+	display: inline-table;
+	margin: 0px 20px 0px 20px;
+	text-align: center;
+}
+
+header {
+	background-image: url(http://www.freewhd.com/wp-content/uploads/2014/01/rainbow-in-the-clouds-15621-1024x576.jpg);
+	background-size: 100%;
+	border-bottom-style: groove;
+	border-bottom-color: black;
+	border-bottom-width: 6px;
+}
+
+.create {
+	text-align: center;
+}
+
+
+.show {
+	text-align: center;
+}
+
+.nav {
+	text-align: center;
+	margin: 0px;
+}
+
+.purchase {
+	text-align: center;
+}
+
+.stock {
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
