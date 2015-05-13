@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS shirts (
+	id INTEGER PRIMARY KEY,
+	name TEXT, image TEXT,
+	quantity INTEGER
+
+);
+
+CREATE TABLE IF NOT EXISTS buyers (
+	id INTEGER PRIMARY KEY,
+	email TEXT, s_id INTEGER,
+	p_quantity INTEGER
+);
