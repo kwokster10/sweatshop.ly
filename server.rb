@@ -14,6 +14,15 @@ end
 #show all shirts
 get '/shirts' do 
   erb :index , locals: {shirts: Shirt.all} 
+
+end
+
+# show one shirt
+get '/shirts/:id' do
+	id = params[:id].to_i
+	shirt = Shirt.find(id)
+	puts "hello"
+	erb :show, locals: {shirt: shirt}
 end
 
 # show one shirt
@@ -40,5 +49,35 @@ put '/shirts/:id' do
 		quantity: params[:editQuantity]
 	}
 	shirt.update(editShirt)
-	redirect('/shirts')
+	redirect('/admin')
 end
+
+#create a shirt
+post "/shirts" do 
+	id = params[:id].to_i
+	name = params[:name]
+	image = params[:image]
+	quantity = params[:quantity].to_i
+	Shirt.create(name: name, image: image, quantity: quantity)
+	redirect("/shirts")
+end
+
+# delete a shirt
+delete "/shirts/:id" do
+	id = params[:id].to_i
+	Shirt.find(id).destroy
+	redirect("/admin")
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
