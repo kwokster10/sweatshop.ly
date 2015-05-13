@@ -69,6 +69,26 @@ delete "/shirts/:id" do
 	redirect("/admin")
 end
 
+#obtain all shirts by email
+
+get '/admin/purchases' do
+
+  buyers = Buyer.all
+  shirts = Shirt.all
+
+  emails = []
+
+  buyers.each do |buyer|
+
+    emails.push(buyer.email)
+
+  end
+
+  emails.uniq!
+
+  erb :purchases, locals: ({buyers: buyers, shirts: shirts, emails: emails})
+end
+
 
 
 

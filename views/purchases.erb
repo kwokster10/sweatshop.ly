@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<h1>Purchase History</h1>
+
+  <%emails.each do |email| %>
+    
+    <h3><%= email %></h3>
+    
+    <ul class='purchases_list'>
+
+      <% buyers.each do |per| %>
+
+        <% if email == per.email %>
+
+        <li>
+
+          <%= per.p_quantity %>
+          
+          <%= shirts.find(per.s_id).name %>
+
+        </li>
+
+      <%end%>
+
+    <%end%>
+
+  </ul>
+   
+  <%end%>
+
+</body>
+
+</html>

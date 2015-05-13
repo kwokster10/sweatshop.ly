@@ -21,18 +21,18 @@ Shirt.create({
 
 # Buyer.create({
 # 	email: "dummy1@gmail.com",
-# 	s_id: ,
-# 	p_quantity: 0 
-# 	})
+# 	p_quantity: 0,
+# 	shirt_id:
+# 	});
 
 # Buyer.create({
 # 	email: "dummy2@gmail.com",
-# 	s_id: ,
-# 	p_quantity: 0
-# 	})
+# 	p_quantity: 0,
+# 	shirt_id:
+# 	});
 
 # Buyer.create({
 # 	email: "dummy3@gmail.com",
-# 	s_id: ,
-# 	p_quantity: 
-# 	})
+# 	p_quantity: 0,
+# 	shirt_id: 
+# 	});
