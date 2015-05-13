@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<form action="/shirts" method="POST">
+     	
+      			<label>Name</label>
+      			<input type="text" name="name" placeholder="Shirt Name">
+      			<label>Quantity</label>
+      			<input type="text" name="quantity" placeholder="Quantity">
+      			<label>Image</label>
+      			<input type="text" name="image" placeholder="Image URL">
+      			<button>Edit</button>
+
+ 		<ul class="shirts_list">
+
+   		<% shirts.each do |shirt| %>
+
+      	<li>
+
+      		<%= shirt.name %>
+      		<%= shirt.quantity %>
+      		<img src='<%= shirt.image %>'/>
+      		<button>Delete</button>
+
+
+      		<form action="/shirts/<%= shirt.id %>" method="POST">
+      			<input type="hidden" name="_method" value="PUT">
+      			<input type="text" name="editName" value="<%= shirt.name %>">
+      			<input type="text" name="editQuantity" value="<%= shirt.quantity %>">
+      			<input type="text" name="editImage" value="<%= shirt.image %>">
+      			<button>Edit</button>
+
+      		</form>
+     	</li>
+
+    	<%end%>
+
+	</ul>
+	</body>
+</html>
