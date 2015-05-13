@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'pry'
+require 'timeout'
 
 require_relative 'models/shirt'
 require_relative 'models/buyer'
@@ -68,6 +69,9 @@ post "/buyers/:shirt_id" do
 	Buyer.create({email: buyer, p_quantity: quantity, s_id: shirt_id})
 	shirt = Shirt.find(shirt_id)
 	shirt.update({quantity: shirt.quantity - quantity})
+	Timeout::timeout(5) {
+		erb :thanks
+	}
 	redirect("/shirts")
 end
 
