@@ -9,17 +9,21 @@
 <body>
 	<h1><%= shirt.name %></h1>
 	<img src="<%= shirt.image %>">
-	<select name="shirt_quantity">
+	<p>$<%= shirt.price %></p>
+	<form action="/buyers/<%= shirt.id %>" method="POST">
+	<select id="quant" name="shirt_quantity">
 		<% for num in 0..shirt.quantity %>
 			<option value="<%= num %>"><%= num %></option>
 		<% end %>
 	</select>
-
-	<form action="/shirts" method="POST">
 		<input type="text" name="email" placeholder="Enter Email">
-		<button>Purchase</button>	
+		<button id="purchase_button">Purchase</button>	
 	</form>
 	<a href= "/shirts"> Go Home </a>
+<script type="text/javascript">
 
+	if $("#purchase_button").click() && $("#quant").value > 0
+		alert="Thanks for purchasing! Please check your email."
+</script>
 </body>
 </html>

@@ -60,6 +60,17 @@ post "/shirts" do
 	redirect("/shirts")
 end
 
+# purchase a shirt and then go back to main page
+post "/buyers/:shirt_id" do
+	buyer = params[:email].chomp
+	quantity = params[:shirt_quantity].to_i
+	shirt_id = params[:shirt_id].to_i
+	Buyer.create({email: buyer, p_quantity: quantity, s_id: shirt_id})
+	shirt = Shirt.find(shirt_id)
+	shirt.update({quantity: shirt.quantity - quantity})
+	redirect("/shirts")
+end
+
 # delete a shirt
 delete "/shirts/:id" do
 	id = params[:id].to_i
