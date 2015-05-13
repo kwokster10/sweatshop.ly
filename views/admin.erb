@@ -40,7 +40,9 @@
       	<li>
 
       		<%= shirt.name %>
-      		<%= shirt.quantity %>
+          <br />
+
+      		In Stock: <%= shirt.quantity %>
       		<img src='<%= shirt.image %>'/>
           <form action="/shirts/<%= shirt.id %>" method="POST">
           <input type="hidden" name="_method" value="DELETE">
@@ -51,16 +53,18 @@
       			<input type="hidden" name="_method" value="PUT">
       			<input type="text" name="editName" value="<%= shirt.name %>">
             <input type="text" name="editPrice" value="<%= shirt.price %>">
+            <br />
       			<input type="text" name="editQuantity" value="<%= shirt.quantity %>">
       			<input type="text" name="editImage" value="<%= shirt.image %>">
+            <br />
       			<button>Edit</button>
 
       		</form>
      	</li>
 
     	<%end%>
+</ul>
 
 
-	</ul>
 	</body>
 </html>

@@ -16,8 +16,8 @@
 	<h1><%= shirt.name %></h1>
 </header>
 <br />
+	<img class = "pic" src="<%= shirt.image %>">
 	<div class = "show">
-	<img src="<%= shirt.image %>">
 	<p>$<%= shirt.price %></p>
 	<form action="/buyers/<%= shirt.id %>" method="POST">
 	<select id="quant" name="shirt_quantity">

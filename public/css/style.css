@@ -50,7 +50,16 @@ header {
 
 
 .show {
-	text-align: center;
+	float: right;
+	margin-right: 60px;
+	margin-top: 120px;
+}
+
+.pic {
+	float: left;
+	margin-left: 280px;
+	min-height: 400px;
+	min-width: 300px;
 }
 
 .nav {
@@ -66,9 +75,9 @@ header {
 	text-align: center;
 }
 
-
-
-
+.shirt_list {
+	text-align: center;
+}
 
 
 
