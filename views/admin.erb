@@ -10,21 +10,31 @@
 <a href="/shirts"> Go Home </a>
 <a href="/admin/purchases">Purchase History</a>
 
-	<form action="/shirts" method="POST">
-     	
-      			<label>Name</label>
-      			<input type="text" name="name" placeholder="Shirt Name">
-      			<label>Quantity</label>
-      			<input type="text" name="quantity" placeholder="Quantity">
+  <div id="errors">
+    <% if errors.values %>
+    <ul>
+      <% errors.values.each{|error| %>
+          <li><%= error[0] %></li>
+      <% } %>
+    </ul>
+    <% end %>
+  </div>
+
+  <form action="/shirts" method="POST">
+      
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Shirt Name">
+            <label>Quantity</label>
+            <input type="text" name="quantity" placeholder="Quantity">
             <label>Price</label>
             <input type="text" name="price" placeholder="Price">
-      			<label>Image</label>
-      			<input type="text" name="image" placeholder="Image URL">
-      			<button>New</button>
+            <label>Image</label>
+            <input type="text" name="image" placeholder="Image URL">
+            <button>New</button>
   </form>
 
  		<ul class="shirts_list">
-
+    <% if shirts %>
    		<% shirts.each do |shirt| %>
 
       	<li>
@@ -48,8 +58,8 @@
       		</form>
      	</li>
 
-    	<%end%>
-
+    	<% end %>
+    <% end %>
 
 	</ul>
 	</body>

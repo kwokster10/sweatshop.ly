@@ -12,7 +12,7 @@
 
 
  <ul class="shirts_list">
-
+  <% if shirts %>
     <% shirts.each do |shirt| %>
 
       <li>
@@ -25,7 +25,7 @@
       </li>
 
     <%end%>
-
+<% end %>
 </ul>
 
 </body>

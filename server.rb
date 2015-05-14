@@ -21,20 +21,15 @@ end
 get '/shirts/:id' do
 	id = params[:id].to_i
 	shirt = Shirt.find(id)
-	erb :show, locals: {shirt: shirt}
-end
-
-# show one shirt
-get '/shirts/:id' do
-	id = params[:id].to_i
-	shirt = Shirt.find(id)
-	erb :show, locals: {shirt: shirt}
+	errors = {}
+	erb :show, locals: {shirt: shirt, errors: errors}
 end
 
 # show admin page
 get '/admin' do
-	shirt = Shirt.all
-	erb :admin, locals: {shirts: shirt}
+	errors = {}
+	shirts = Shirt.all
+	erb :admin, locals: {shirts: shirts, errors: errors}
 end
 
 
@@ -42,25 +37,40 @@ end
 put '/shirts/:id' do
 	id = params[:id].to_i
 	shirt = Shirt.find(id)
-	editShirt = {
+	begin
+	shirt.update!({
 		name: params[:editName].chomp,
 		price: params[:editPrice].chomp,
 		image: params[:editImage].chomp,
 		quantity: params[:editQuantity].to_i
-	}
-	shirt.update(editShirt)
+	})
 	redirect('/admin')
+	rescue Exception => error_message
+		errors = {message: [error_message.message.split(":")[1]]}
+	# if shirt.update(editShirt)
+	# else
+		# puts shirt.update(editShirt).errors
+		shirts = Shirt.all
+		erb :admin, locals: {errors: errors, shirts: shirts}
+	end	
+
 end
 
 #create a shirt
 post "/shirts" do 
-	id = params[:id].to_i
-	name = params[:name].chomp
-	price = params[:price].chomp
-	image = params[:image].chomp
-	quantity = params[:quantity].to_i
-	Shirt.create(name: name, price: price, image: image, quantity: quantity)
-	redirect("/shirts")
+	new_shirt = Shirt.new({
+		name: params[:name].chomp, 
+		price: params[:price].chomp, 
+		image: params[:image].chomp, 
+		quantity: params[:quantity].to_i 
+		})
+	if new_shirt.save 
+		redirect("/shirts")
+	else 
+		errors = new_shirt.errors
+		shirts = Shirt.all
+		erb :admin, locals: {errors: errors, shirts: shirts}
+	end	
 end
 
 # purchase a shirt and then go back to main page
@@ -68,19 +78,17 @@ post "/buyers/:shirt_id" do
 	buyer = params[:email].chomp
 	quantity = params[:shirt_quantity].to_i
 	shirt_id = params[:shirt_id].to_i
-	Buyer.create({email: buyer, p_quantity: quantity, s_id: shirt_id})
+	new_buyer = Buyer.new({email: buyer, p_quantity: quantity, s_id: shirt_id})
 	shirt = Shirt.find(shirt_id)
-	shirt.update({quantity: shirt.quantity - quantity})
 
-	erb :thanks
-
-
+	if new_buyer.save
+		shirt.update({quantity: shirt.quantity - quantity})
+		erb :thanks
+	else
+		errors = new_buyer.errors
+		erb :show, locals: {shirt: shirt, errors: errors}
+	end
 end
-
-# get '/buyers/:shirt_id' do
-# 	sleep(5)
-# 	redirect('/shirts')
-# end
 
 # delete a shirt
 delete "/shirts/:id" do
@@ -89,8 +97,7 @@ delete "/shirts/:id" do
 	redirect("/admin")
 end
 
-#obtain all shirts by email
-
+# obtain history of purchases sorted by email
 get '/admin/purchases' do
   buyers = Buyer.all
   shirts = Shirt.all

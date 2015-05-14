@@ -19,6 +19,15 @@
 		<input type="text" name="email" placeholder="Enter Email">
 		<button id="purchase_button">Purchase</button>	
 	</form>
+	<div id="error">
+		<% if errors.values %>
+	    <ul>
+	      <% errors.values.each{|error| %>
+	          <li><%= error[0] %></li>
+	      <% } %>
+	    </ul>
+	    <% end %>
+	</div>
 	<a href= "/shirts"> Go Home </a>
 
 </body>
