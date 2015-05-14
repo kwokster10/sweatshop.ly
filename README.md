@@ -30,7 +30,7 @@ A t-shirt site with inventory management and customer-facing functionality.
 ###Admin
 - Admin can go to ```/admin``` and see an admin panel.
 - Admin can add a shirt, remove a shirt, and update all the attributes of a shirt (quantity, price, image url).
-- Admin input on add or edit is validated (quantity is non-zero, email is valid, name is not empty, url is not empty)
+- Admin input on add or edit is validated on submission (quantity is non-zero, email is valid, name is not empty, url is not empty)
 - Admin can see all past purchases of a given customer.
 
 
