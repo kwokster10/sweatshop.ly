@@ -20,40 +20,37 @@
 </div>
 
   <div id="errors">
-    <% if errors.values %>
     <ul>
+    <% if errors.values %>
       <% errors.values.each{|error| %>
           <li><%= error[0] %></li>
       <% } %>
-    </ul>
     <% end %>
+    </ul>
   </div>
 
 <h2> Add New Shirts Here: </h2>
 	<form action="/shirts" method="POST" class= "create">
-     	
-      			<label>Name</label>
-      			<input type="text" name="name" placeholder="Shirt Name">
-      			<label>Quantity</label>
-      			<input type="text" name="quantity" placeholder="Quantity">
-            <label>Price</label>
-            <input type="text" name="price" placeholder="Price">
-            <label>Image</label>
-            <input type="text" name="image" placeholder="Image URL">
-            <button>New</button>
+		<label>Name</label>
+		<input type="text" name="name" placeholder="Shirt Name">
+		<label>Quantity</label>
+		<input type="text" name="quantity" placeholder="Quantity">
+    <label>Price</label>
+    <input type="text" name="price" placeholder="Price">
+    <label>Image</label>
+    <input type="text" name="image" placeholder="Image URL">
+    <button>New</button>
   </form>
 
  		<ul class="shirts_list">
     <% if shirts %>
    		<% shirts.each do |shirt| %>
-
       	<li>
-
       		<%= shirt.name %>
           <br />
-
       		In Stock: <%= shirt.quantity %>
       		<img src='<%= shirt.image %>'/>
+
           <form action="/shirts/<%= shirt.id %>" method="POST">
           <input type="hidden" name="_method" value="DELETE">
       		<button>Delete</button>
@@ -68,13 +65,10 @@
       			<input type="text" name="editImage" value="<%= shirt.image %>">
             <br />
       			<button>Edit</button>
-
       		</form>
      	</li>
-
-    	<% end %>
+      <% end %>
     <% end %>
-    	<%end%>
 </ul>
 
 	</body>
