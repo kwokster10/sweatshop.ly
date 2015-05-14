@@ -24,11 +24,13 @@ A t-shirt site with inventory management and customer-facing functionality.
 - User can 'buy' a quantity of a given shirt if at least that quantity exists in inventory.
 - In a tranaction, a user chooses quantity to purchase and enters an email address.
 - Available inventory updates to reflect quantities purchased by a user.
+- User purchase input is validated on submission (quantity is non-zero, email is valid).
 - User sees a confirmation when they make a purchase.
 
 ###Admin
 - Admin can go to ```/admin``` and see an admin panel.
 - Admin can add a shirt, remove a shirt, and update all the attributes of a shirt (quantity, price, image url).
+- Admin input on add or edit is validated (quantity is non-zero, email is valid, name is not empty, url is not empty)
 - Admin can see all past purchases of a given customer.
 
 
