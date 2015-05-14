@@ -11,9 +11,13 @@ get '/' do
 end
 
 #show all shirts
-get '/shirts' do 
-  erb :index , locals: {shirts: Shirt.all} 
-
+get '/shirts' do
+	if params[:sort]
+		shirts = Shirt.all.order(params[:sort])
+	else 
+		shirts = Shirt.all
+	end
+ 	erb :index , locals: {shirts: shirts} 
 end
 
 # show one shirt

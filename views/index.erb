@@ -15,6 +15,17 @@
 
 <h1> SweatShop.ly </h1>
 </header>
+
+<div class="sort_dropdown">
+<form action="/shirts" method="GET">
+    <select name="sort">
+      <option value="price ASC">Lowest to Highest Priced</option>
+      <option value="price DESC">Highest to Lowest Priced</option>
+    </select>
+    <button>Sort</button>
+  </form>
+</div>
+
  <ul class="shirts_list">
   <% if shirts %>
     <% shirts.each do |shirt| %>

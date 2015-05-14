@@ -82,3 +82,8 @@ header {
 	color: red;
 	font-style: bold;
 }
+.sort_dropdown {
+	margin-top: 10px;
+	margin-right: 30px;
+	float: right;
+}
