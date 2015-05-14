@@ -38,18 +38,15 @@ put '/shirts/:id' do
 	id = params[:id].to_i
 	shirt = Shirt.find(id)
 	begin
-	shirt.update!({
-		name: params[:editName].chomp,
-		price: params[:editPrice].chomp,
-		image: params[:editImage].chomp,
-		quantity: params[:editQuantity].to_i
-	})
-	redirect('/admin')
+		shirt.update!({
+			name: params[:editName].chomp,
+			price: params[:editPrice].chomp,
+			image: params[:editImage].chomp,
+			quantity: params[:editQuantity].to_i
+		})
+		redirect('/admin')
 	rescue Exception => error_message
 		errors = {message: [error_message.message.split(":")[1]]}
-	# if shirt.update(editShirt)
-	# else
-		# puts shirt.update(editShirt).errors
 		shirts = Shirt.all
 		erb :admin, locals: {errors: errors, shirts: shirts}
 	end	

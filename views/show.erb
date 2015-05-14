@@ -3,12 +3,21 @@
 <head>
 	<link rel = "stylesheet" type = "text/css" href = "/css/style.css">
 	<link href='http://fonts.googleapis.com/css?family=Kalam:700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Calligraffitti' rel='stylesheet' type='text/css'>
 	<meta charset="UTF-8">
 	<title>One shirt</title>
 </head>
 <body>
+<header>
+	<ul class = "nav">
+	<li><a href="/shirts"> The Shop </a> </li>
+	<li><a href="/admin"> Admin Site </a> </li>
+	</ul>
 	<h1><%= shirt.name %></h1>
-	<img src="<%= shirt.image %>">
+</header>
+<br />
+	<img class = "pic" src="<%= shirt.image %>">
+	<div class = "show">
 	<p>$<%= shirt.price %></p>
 	<form action="/buyers/<%= shirt.id %>" method="POST">
 	<select id="quant" name="shirt_quantity">
@@ -19,6 +28,8 @@
 		<input type="text" name="email" placeholder="Enter Email">
 		<button id="purchase_button">Purchase</button>	
 	</form>
+	</div>
+
 	<div id="error">
 		<% if errors.values %>
 	    <ul>
@@ -28,7 +39,6 @@
 	    </ul>
 	    <% end %>
 	</div>
-	<a href= "/shirts"> Go Home </a>
 
 </body>
 </html>

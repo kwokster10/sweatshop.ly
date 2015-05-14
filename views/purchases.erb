@@ -3,39 +3,35 @@
 <head>
 <link rel = "stylesheet" type = "text/css" href = "/css/style.css">
 <link href='http://fonts.googleapis.com/css?family=Kalam:700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Calligraffitti' rel='stylesheet' type='text/css'>
 </head>
 <body>
-
-<h1>Purchase History</h1>
-<a href="/admin">Back to Admin</a>
-<a href="/shirts">See Stock</a>
-
-  <% emails.each do |email| %>
-    
-    <h3><%= email %></h3>
-    
-    <ul class='purchases_list'>
-
-      <% buyers.each do |per| %>
-
-        <% if email == per.email %>
-
-        <li>
-
-          <%= per.p_quantity %>
-          
-          <%= shirts.find(per.s_id).name %>
-
-        </li>
-
-      <%end%>
-
-    <%end%>
-
+<header>
+  <ul class = "nav">
+  <li><a href="/shirts"> The Shop </a> </li>
+  <li><a href="/admin"> Admin Site </a> </li>
   </ul>
-   
-  <%end%>
+<h1>Purchase History</h1>
+</header>
+<br />
 
+<div class = "stock">
+  <%emails.each do |email| %> 
+    <h3><%= email %></h3>
+    <ul class='purchases_list'>
+      <% buyers.each do |per| %>
+        <% if email == per.email %>
+        <li>
+          Bought <%= per.p_quantity %>
+         <%= shirts.find(per.s_id).name %> T-Shirts
+        </li>
+       <%end%>
+      <%end%>
+    </ul>
+  </div>
+  
 </body>
-
 </html>
+
+
+

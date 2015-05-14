@@ -3,12 +3,21 @@
 <head>
 	<link rel = "stylesheet" type = "text/css" href = "/css/style.css">
   <link href='http://fonts.googleapis.com/css?family=Kalam:700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Calligraffitti' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<h1>ADMIN</h1>
+<header>
+  <ul class = "nav">
+  <li><a href="/shirts"> The Shop </a> </li>
+  <li><a href="/admin"> Admin Site </a> </li>
+  </ul>
+<h1>Admin Site</h1>
+</header>
+<br />
 
-<a href="/shirts"> Go Home </a>
+<div class = "purchase">
 <a href="/admin/purchases">Purchase History</a>
+</div>
 
   <div id="errors">
     <% if errors.values %>
@@ -20,12 +29,13 @@
     <% end %>
   </div>
 
-  <form action="/shirts" method="POST">
-      
-            <label>Name</label>
-            <input type="text" name="name" placeholder="Shirt Name">
-            <label>Quantity</label>
-            <input type="text" name="quantity" placeholder="Quantity">
+<h2> Add New Shirts Here: </h2>
+	<form action="/shirts" method="POST" class= "create">
+     	
+      			<label>Name</label>
+      			<input type="text" name="name" placeholder="Shirt Name">
+      			<label>Quantity</label>
+      			<input type="text" name="quantity" placeholder="Quantity">
             <label>Price</label>
             <input type="text" name="price" placeholder="Price">
             <label>Image</label>
@@ -40,7 +50,9 @@
       	<li>
 
       		<%= shirt.name %>
-      		<%= shirt.quantity %>
+          <br />
+
+      		In Stock: <%= shirt.quantity %>
       		<img src='<%= shirt.image %>'/>
           <form action="/shirts/<%= shirt.id %>" method="POST">
           <input type="hidden" name="_method" value="DELETE">
@@ -51,8 +63,10 @@
       			<input type="hidden" name="_method" value="PUT">
       			<input type="text" name="editName" value="<%= shirt.name %>">
             <input type="text" name="editPrice" value="<%= shirt.price %>">
+            <br />
       			<input type="text" name="editQuantity" value="<%= shirt.quantity %>">
       			<input type="text" name="editImage" value="<%= shirt.image %>">
+            <br />
       			<button>Edit</button>
 
       		</form>
@@ -60,7 +74,8 @@
 
     	<% end %>
     <% end %>
+    	<%end%>
+</ul>
 
-	</ul>
 	</body>
 </html>
