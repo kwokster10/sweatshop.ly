@@ -26,6 +26,7 @@ A t-shirt site with inventory management and customer-facing functionality.
 - Available inventory updates to reflect quantities purchased by a user.
 - User purchase input is validated on submission (quantity is non-zero, email is valid).
 - User sees a confirmation when they make a purchase.
+- User can sort t-shirt inventory showing by price (highest to lowest or lowest to highest)
 
 ###Admin
 - Admin can go to ```/admin``` and see an admin panel.
