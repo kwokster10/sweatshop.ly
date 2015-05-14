@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'pry'
-require 'timeout'
 
 require_relative 'models/shirt'
 require_relative 'models/buyer'
@@ -37,7 +36,7 @@ end
 put '/shirts/:id' do
 	id = params[:id].to_i
 	shirt = Shirt.find(id)
-	begin
+	begin # using this to stop update if shirt is invalid
 		shirt.update!({
 			name: params[:editName].chomp,
 			price: params[:editPrice].chomp,
@@ -45,7 +44,7 @@ put '/shirts/:id' do
 			quantity: params[:editQuantity].to_i
 		})
 		redirect('/admin')
-	rescue Exception => error_message
+	rescue Exception => error_message # getting error message
 		errors = {message: [error_message.message.split(":")[1]]}
 		shirts = Shirt.all
 		erb :admin, locals: {errors: errors, shirts: shirts}
@@ -61,9 +60,9 @@ post "/shirts" do
 		image: params[:image].chomp, 
 		quantity: params[:quantity].to_i 
 		})
-	if new_shirt.save 
+	if new_shirt.save # runs if everything's valid
 		redirect("/shirts")
-	else 
+	else # shows errors and does not save
 		errors = new_shirt.errors
 		shirts = Shirt.all
 		erb :admin, locals: {errors: errors, shirts: shirts}
@@ -78,10 +77,10 @@ post "/buyers/:shirt_id" do
 	new_buyer = Buyer.new({email: buyer, p_quantity: quantity, s_id: shirt_id})
 	shirt = Shirt.find(shirt_id)
 
-	if new_buyer.save
+	if new_buyer.save # if all purchase fields are valid
 		shirt.update({quantity: shirt.quantity - quantity})
 		erb :thanks
-	else
+	else # if any purchase field is missing, throw error
 		errors = new_buyer.errors
 		erb :show, locals: {shirt: shirt, errors: errors}
 	end
@@ -99,12 +98,11 @@ get '/admin/purchases' do
   buyers = Buyer.all
   shirts = Shirt.all
 
+  # making array of buyers by email unique
   emails = []
-
   buyers.each do |buyer|
     emails.push(buyer.email)
   end
-
   emails.uniq!
 
   erb :purchases, locals: ({buyers: buyers, shirts: shirts, emails: emails})
