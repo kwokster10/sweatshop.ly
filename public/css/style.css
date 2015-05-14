@@ -78,4 +78,7 @@ header {
 .shirt_list {
 	text-align: center;
 }
-
+#errors {
+	color: red;
+	font-style: bold;
+}
