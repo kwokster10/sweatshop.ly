@@ -82,8 +82,9 @@ post "/buyers/:shirt_id" do
 	shirt = Shirt.find(shirt_id)
 
 	if new_buyer.save # if all purchase fields are valid
+		spent = shirt.price * quantity
 		shirt.update({quantity: shirt.quantity - quantity})
-		erb :thanks
+		erb :thanks, locals: {spent: spent}
 	else # if any purchase field is missing, throw error
 		errors = new_buyer.errors
 		erb :show, locals: {shirt: shirt, errors: errors}
